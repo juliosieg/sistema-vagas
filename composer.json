@@ -1,0 +1,13 @@
+{
+    "name": "julio/sistema-vagas",
+    "authors": [
+        {
+            "name": "Julio Sieg",
+            "email": "julio.sieg@gmail.com"
+        }
+    ],
+    "require": {
+        "jarouche/viacep": "^1.0",
+        "phpmailer/phpmailer": "^6.1"
+    }
+}
