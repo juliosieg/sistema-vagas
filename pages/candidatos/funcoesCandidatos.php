@@ -35,6 +35,9 @@ switch ($funcao) {
     case 'carregarEscolaridadeCandidato':
         carregarEscolaridadeCandidato();
         break;
+    case 'verCandidaturas':
+        verCandidaturas();
+        break;
 }
 
 function carregarAreas() {
@@ -213,4 +216,17 @@ function carregarEscolaridadeCandidato() {
 
     }
 
+}
+
+function verCandidaturas() {
+    $conexao = new Conexao();
+    $conexao->abreConexao();
+
+    $sql = ' SELECT v.cargo, vc.dt_candidatura FROM vagas_candidato vc INNER JOIN vagas v on v.id = vc.id_vaga';
+    $sql .= ' WHERE vc.id_candidato = '.$_POST['idCandidato'];
+    $sql .= ' ORDER BY v.cargo ';
+
+    $conexao->Executar($sql);
+    print_r(json_encode($conexao->MontarResultados()));
+    $conexao->Fechar();
 }

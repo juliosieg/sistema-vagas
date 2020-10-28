@@ -103,7 +103,8 @@ function drawRow(rowData) {
         <i class='fa fa-eye' title='Ver vaga' style='cursor: pointer' codigo=" + rowData.id + " onclick=\"verVaga($(this).attr('codigo'))\"/></i> \n\
         <i class='fa fa-edit' title='" + (rowData.status == 5 ? "Vaga excluída'" : "Editar Vaga'") + "' style='" + (rowData.status == 5 ? "cursor: normal; color: gray;'" : "cursor: pointer;'") + "codigo=" + rowData.id + " onclick=\"editarVaga($(this).attr('codigo'))\"/></i> \n\
         <i class='fa fa-trash' title='" + (rowData.status == 5 ? "Vaga já excluída'" : "Excluir Vaga'") + "' style='" + (rowData.status == 5 ? "cursor: normal; color: gray;'" : "cursor: pointer;'") + "codigo=" + rowData.id + " cargo='" + rowData.cargo + "' onclick=\"excluirVaga($(this).attr('cargo'), $(this).attr('codigo'))\"/></i> \n\
-        <i class='fa fa-cog' title='" + (rowData.status == 5 ? "Vaga excluída'" : "Alterar Status'") + "' style='" + (rowData.status == 5 ? "cursor: normal; color: gray;'" : "cursor: pointer;'") + "codigo=" + rowData.id + " onclick=\"alterarStatus('"+ rowData.id +"', '" + rowData.status + "')\"/></i> \n\ "));
+        <i class='fa fa-cog' title='" + (rowData.status == 5 ? "Vaga excluída'" : "Alterar Status'") + "' style='" + (rowData.status == 5 ? "cursor: normal; color: gray;'" : "cursor: pointer;'") + "codigo=" + rowData.id + " onclick=\"alterarStatus('"+ rowData.id +"', '" + rowData.status + "')\"/></i> \n\
+        <i class='fa fa-users' title='Ver candidatos' style='cursor: pointer' codigo=" + rowData.id + " onclick=\"verCandidatos('"+ rowData.id +"')\"/></i> \n\ "));
 }
 
 function formatSalario(salario) {
@@ -531,4 +532,34 @@ function filtrarVagas() {
 
     window.location.href = '?pg=vagas' + this.getParams();
 
+}
+
+function verCandidatos(idVaga) {
+    $.post({url: "pages/vagas/funcoesVagas.php?funcao=verCandidatos", data: {idVaga}, success: function(result){
+        var data = JSON.parse(result);
+
+        var dados = '';
+
+        if(data.length > 0) {
+
+            for(var i=0; i<data.length; i++) {
+                dados += '<b>Nome:</b> ' + data[i]['nome'] + '';
+                dados += '<br>';
+                dados += '<b>E-mail:</b> ' + data[i]['email'] + '';
+                dados += '<br>';
+                dados += '<b>CPF:</b> ' + data[i]['cpf'] + '';
+                dados += '<br><br>';
+            }
+
+            Swal.fire({
+                title: 'Candidatos',
+                html: dados
+            })
+        } else {
+            Swal.fire({
+                title: 'Candidatos',
+                text: 'Nenhuma candidatura realizada.'
+            })
+        }
+    }});
 }

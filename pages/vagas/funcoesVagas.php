@@ -44,6 +44,9 @@ switch ($funcao) {
     case 'alterarStatus':
         alterarStatus();
         break;
+    case 'verCandidatos':
+        verCandidatos();
+        break;
 }
 
 function carregarVaga() {
@@ -368,4 +371,17 @@ function alterarStatus() {
 
     $conexao->Fechar();
     echo '1';
+}
+
+function verCandidatos() {
+    $conexao = new Conexao();
+    $conexao->abreConexao();
+
+    $sql = ' SELECT * FROM vagas_candidato vc INNER JOIN candidatos c on c.id = vc.id_candidato';
+    $sql .= ' WHERE vc.id_vaga = '.$_POST['idVaga'];
+    $sql .= ' ORDER BY c.nome ';
+
+    $conexao->Executar($sql);
+    print_r(json_encode($conexao->MontarResultados()));
+    $conexao->Fechar();
 }

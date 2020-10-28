@@ -79,9 +79,6 @@
                             <div class='col-md-10 col-sm-6 tituloTabela'>
                                 <b> Vagas </b>
                             </div>
-                            <div class='col-md-2 col-sm-6'>
-                                <button type="button" class="btn btn-block bg-gradient-orange" data-toggle="modal" data-target="#modalInsercao" data-backdrop="static" data-keyboard="false">Adicionar</button>
-                            </div>
                         </div>
                     </div>
 

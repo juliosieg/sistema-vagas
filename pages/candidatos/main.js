@@ -357,7 +357,8 @@ function drawRow(rowData) {
         <i class='fa fa-eye' title='Ver currículo' style='cursor: pointer' codigo=" + rowData.id + " onclick=\"verCurriculo($(this).attr('codigo'))\"/></i> \n\
         <i class='fab fa-linkedin-in' title='" + (rowData.linkedin == '' ? "LinkedIn Indisponível'" : "Acessar Linkedin'") + " style='" + (rowData.linkedin == '' ? "cursor: normal; color: gray;'" : "cursor: pointer;'") + " onclick=\"abrirLinkNovaAba(\'"+rowData.linkedin+"\')\"/></i> \n\
         <i class='fab fa-facebook' title='" + (rowData.facebook == '' ? "Facebook Indisponível'" : "Acessar Facebook'") + " style='" + (rowData.facebook == '' ? "cursor: normal; color: gray;'" : "cursor: pointer;'") + " onclick=\"abrirLinkNovaAba(\'"+rowData.facebook+"\')\"/></i> \n\
-        <i class='fa fa-link' title='" + (rowData.blog == '' ? "Blog Indisponível'" : "Acessar Blog'") + " style='" + (rowData.blog == '' ? "cursor: normal; color: gray;'" : "cursor: pointer;'") + "' onclick=\"abrirLinkNovaAba(\'"+rowData.blog+"\')\"/></i> \n\ "));
+        <i class='fa fa-link' title='" + (rowData.blog == '' ? "Blog Indisponível'" : "Acessar Blog'") + " style='" + (rowData.blog == '' ? "cursor: normal; color: gray;'" : "cursor: pointer;'") + "' onclick=\"abrirLinkNovaAba(\'"+rowData.blog+"\')\"/></i> \n\
+        <i class='fa fa-briefcase' title='Ver candidaturas' style='cursor: pointer' codigo=" + rowData.id + " onclick=\"verCandidaturas('"+ rowData.id +"')\"/></i> \n\ "));
 }
 
 function abrirLinkNovaAba(url) {
@@ -695,4 +696,38 @@ function filtrarCandidatos() {
 
     window.location.href = '?pg=candidatos' + this.getParamsFromFilter();
 
+}
+
+function verCandidaturas(idCandidato) {
+    $.post({url: "pages/candidatos/funcoesCandidatos.php?funcao=verCandidaturas", data: {idCandidato}, success: function(result){
+        var data = JSON.parse(result);
+
+        var dados = '';
+
+        if(data.length > 0) {
+
+            for(var i=0; i<data.length; i++) {
+
+                var dtCandidatura = data[i].dt_candidatura;
+                dtCandidatura = dtCandidatura.split(' ');
+                horaCandidatura = dtCandidatura['1'];
+                dtCandidatura = dtCandidatura['0'].split('-');
+
+                dados += '<b>Cargo:</b> ' + data[i]['cargo'] + '';
+                dados += '<br>';
+                dados += '<b>Data da Candidatura:</b> ' +dtCandidatura[2] + '/' + dtCandidatura[1] + '/' + dtCandidatura[0]+ '';
+                dados += '<br><br>';
+            }
+
+            Swal.fire({
+                title: 'Candidaturas',
+                html: dados
+            })
+        } else {
+            Swal.fire({
+                title: 'Candidaturas',
+                text: 'Nenhuma candidatura realizada.'
+            })
+        }
+    }});
 }
