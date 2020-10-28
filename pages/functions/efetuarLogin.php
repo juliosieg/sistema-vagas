@@ -14,7 +14,9 @@ if ($usuario != null && $usuario != "" && $senha != null && $senha != "") {
     $conexao = new Conexao();
     $conexao->abreConexao();
 
-    $sql = "SELECT u.email, u.tipo_perfil, u.senha_alterada FROM usuarios u WHERE u.email = '$usuario' AND (u.senha = '$senha' OR u.senha_provisoria = '$senha')";
+    $sql = "SELECT u.email, u.tipo_perfil, u.senha_alterada 
+            FROM usuarios u 
+            WHERE u.email = '$usuario' AND (u.senha = '$senha' OR u.senha_provisoria = '$senha')";
 
     $conexao->Executar($sql);
     $linhas = $conexao->ContarLinhas();
@@ -33,11 +35,25 @@ if ($usuario != null && $usuario != "" && $senha != null && $senha != "") {
         $tipo_perfil = $resultado[0]['tipo_perfil'];
         $email = $resultado[0]['email'];
         $senhaAlterada = $resultado[0]['senha_alterada'];
+        $id = '';
+
+        if($tipo_perfil == '2') {
+            $sql = "SELECT c.id
+            FROM candidatos c
+            WHERE c.email = '$usuario'";
+
+            $conexao->Executar($sql);
+
+            $resultado = $conexao->MontarResultados();
+
+            $id = $resultado[0]['id'];
+        }
         
         session_start();
         $_SESSION['tipo_perfil'] = $tipo_perfil;
         $_SESSION['email'] = $email;
         $_SESSION['senhaAlterada'] = $senhaAlterada;
+        $_SESSION['id'] = $id;
         $_SESSION['logged'] = TRUE;
         $_SESSION['start'] = time();
         $_SESSION['expire'] = $_SESSION['start'] + (60 * 60);

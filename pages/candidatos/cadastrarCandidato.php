@@ -125,16 +125,16 @@ if($linhas > 0) {
 
         $conexao->Executar($sql);
 
-        $sql = "INSERT INTO usuarios (email, senha, senha_alterada, senha_provisoria, tipo_perfil)
-                VALUES ('".$email."', '".$senhaCriptografada."', 1, '".$senhaCriptografada."', 2)";
-
-        $conexao->Executar($sql);
-
         $sql = "SELECT MAX(id) as maxId FROM candidatos";
         $conexao->Executar($sql);
         $resultado = $conexao->MontarResultados();
 
         $idCandidato = $resultado[0]['maxId'];
+
+        $sql = "INSERT INTO usuarios (email, senha, senha_alterada, senha_provisoria, tipo_perfil)
+                VALUES ('".$email."', '".$senhaCriptografada."', 1, '".$senhaCriptografada."', 2, $idCandidato)";
+
+        $conexao->Executar($sql);
 
         foreach($arrEmpresas as $empresa) {
             $sql = "INSERT INTO empresas_candidato (empresa, cargo, dtInicio, dtFim, atribuicoes, trabalhoAtual, id_candidato)

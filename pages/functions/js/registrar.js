@@ -57,7 +57,7 @@ $('[name=btnIdioma]').on('click', function() {
 
 function adicionarNovoIdioma(nextId) {
     
-    return "<div class='idioma idioma_"+nextId+"' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px'> " +
+    return "<div class='idioma idioma_"+nextId+"' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px; background-color: snow'> " +
     "<div class='row'>" +
     "<div class='col-md-6'>" +
     "<label for='idioma_"+nextId+"'>Idioma</label>" +
@@ -74,11 +74,12 @@ function adicionarNovoIdioma(nextId) {
     "<div class='col-md-12' style='text-align: right'>" +
     "<br>" +
     "<div class='pull-right'>" +
-    "<a href='javascript:excluirIdioma("+nextId+")' class='btn btn-default btn-flat'>Excluir</a>" +
+    "<a href='javascript:excluirIdioma("+nextId+")' class='btn btn-danger btn-flat'>Excluir</a>" +
     "</div>" +
     "</div>" +
     "</div>" +
-    "</div>";
+    "</div>" +
+    "<br class='idioma_"+nextId+"'/>";
 
     
 }
@@ -97,7 +98,7 @@ function adicionarNovaFormacao() {
     }
     
 
-    return "<div class='formacao formacao_"+nextId+"' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px'>" +
+    return "<div class='formacao formacao_"+nextId+"' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px; background-color: snow'>" +
     "<div class='row'>" +
     "<div class='col-md-4'>" +
     "<label for='instituicao_"+nextId+"'>Instituição</label>" +
@@ -133,11 +134,12 @@ function adicionarNovaFormacao() {
     "<div class='col-md-12' style='text-align: right'>" +
     "<br>" +
     "<div class='pull-right'>" +
-    "<a href='javascript:excluirFormacao("+nextId+")' class='btn btn-default btn-flat'>Excluir</a>" +
+    "<a href='javascript:excluirFormacao("+nextId+")' class='btn btn-danger btn-flat'>Excluir</a>" +
     "</div>" +
     "</div>" +
     "</div>" +
-    "</div>";
+    "</div>"+
+    "<br class='formacao_"+nextId+"'/>";
 }
 
 function adicionarNovaLinhaExperienca() {
@@ -154,7 +156,7 @@ function adicionarNovaLinhaExperienca() {
     }
     
 
-    return "<div class='experiencia experiencia_"+nextId+"' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px'>" +
+    return "<div class='experiencia experiencia_"+nextId+"' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px; background-color: snow'>" +
     "<div class='row'>" +
     "<div class='col-md-6'>" +
     "<label for='empresa_"+nextId+"'>Empresa</label>" +
@@ -190,11 +192,12 @@ function adicionarNovaLinhaExperienca() {
     "<div class='col-md-12' style='text-align: right'>" +
     "<br>" +
     "<div class='pull-right'>" +
-    "<a href='javascript:excluirLinhaExperienciaProfissional("+nextId+")' class='btn btn-default btn-flat'>Excluir</a>" +
+    "<a href='javascript:excluirLinhaExperienciaProfissional("+nextId+")' class='btn btn-danger btn-flat'>Excluir</a>" +
     "</div>" +
     "</div>" +
     "</div>" +
-    "</div>";
+    "</div>"+
+    "<br class='experiencia_"+nextId+"'/>";
 }
 
 function excluirLinhaExperienciaProfissional(id) {

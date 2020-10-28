@@ -168,7 +168,7 @@
             <div class='row'>
                 <div class='col-md-12'>
                     <div class='experiencias'>
-                        <div class='experiencia experiencia_1' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px'>
+                        <div class='experiencia experiencia_1' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px; background-color: snow'>
                             <div class='row'>
                                 <div class='col-md-6'>
                                     <label for="empresa_1">Empresa</label>
@@ -204,13 +204,14 @@
                                 <div class='col-md-12' style='text-align: right'>
                                     <br>
                                     <div class="pull-right">
-                                        <a href="javascript:excluirLinhaExperienciaProfissional(1)" class="btn btn-default btn-flat">Excluir</a>
+                                        <a href="javascript:excluirLinhaExperienciaProfissional(1)" class="btn btn-danger btn-flat">Excluir</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <br>
                     </div>
-                    <br>
+                    <br class='experiencia_1'>
                     <div class='col-md-5'>
                         <input type='button' name='btnExperienciaProfissional' class='btn btn-block bg-gradient-orange' value='Adicionar nova experiência'/>
                     </div>
@@ -222,7 +223,7 @@
             <div class='row'>
                 <div class='col-md-12'>
                     <div class='formacoes'>
-                        <div class='formacao formacao_1' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px'>
+                        <div class='formacao formacao_1' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px; background-color: snow'>
                             <div class='row'>
                                 <div class='col-md-4'>
                                     <label for="instituicao_1">Instituição</label>
@@ -258,13 +259,14 @@
                                 <div class='col-md-12' style='text-align: right'>
                                     <br>
                                     <div class="pull-right">
-                                        <a href="javascript:excluirFormacao(1)" class="btn btn-default btn-flat">Excluir</a>
+                                        <a href="javascript:excluirFormacao(1)" class="btn btn-danger btn-flat">Excluir</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <br>
                     </div>
-                    <br>
+                    <br class='formacao_1'>
                     <div class='col-md-5'>
                         <input type='button' name='btnFormacao' class='btn btn-block bg-gradient-orange' value='Adicionar nova formação'/>
                     </div>
@@ -276,7 +278,7 @@
             <div class='row'>
                 <div class='col-md-12'>
                     <div class='idiomas'>
-                        <div class='idioma idioma_1' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px'>
+                        <div class='idioma idioma_1' style='border-radius: 4px; border: 1px solid #e4e4e4; padding: 10px; background-color: snow'>
                             <div class='row'>
                                 <div class='col-md-6'>
                                     <label for="idioma_1">Idioma</label>
@@ -293,13 +295,14 @@
                                 <div class='col-md-12' style='text-align: right'>
                                     <br>
                                     <div class="pull-right">
-                                        <a href="javascript:excluirIdioma(1)" class="btn btn-default btn-flat">Excluir</a>
+                                        <a href="javascript:excluirIdioma(1)" class="btn btn-danger btn-flat">Excluir</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <br>
                     </div>
-                    <br>
+                    <br class='idioma_1'>
                     <div class='col-md-5'>
                         <input type='button' name='btnIdioma' class='btn btn-block bg-gradient-orange' value='Adicionar novo idioma'/>
                     </div>
